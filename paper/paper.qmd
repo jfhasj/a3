@@ -1,0 +1,45 @@
+---
+title: "Number of Marriage Licences by Area"
+subtitle: "Data obtained from Open Data Toronto"
+author: Sean Eugene Chua
+date: today
+date-format: long
+format: pdf
+number-sections: true
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(ggplot2)
+
+data <- read_csv(here::here("data/analysis_data/analysis_data.csv"))
+
+```
+
+# Introduction
+This data was obtained from Open Data Toronto (@opendatatorotno) using R (@talia).
+
+# Data {#sec-mydatasection}
+
+In @fig-marriage, we see that most data is concentrated before 2020 (when the pandemic happened). There is a slight decrease in the years post-pandemic.
+
+```{r}
+#| label: fig-marriage
+#| fig-cap: Scatterplot of Marriage Licences by Date
+#| echo: false
+
+data |> 
+  ggplot(aes(x = date, y = marriage_licenses)) +
+  geom_point()
+```
+
+\newpage
+
+
+# References
+
